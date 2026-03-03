@@ -49,6 +49,7 @@ use Kanvas\Connectors\Internal\Activities\GeneratePdfActivity;
 use Kanvas\Connectors\Internal\Activities\UnPublishExpiredProductActivity;
 use Kanvas\Connectors\Internal\Activities\UnPublishExpiredProductsAfterImportActivity;
 use Kanvas\Connectors\Internal\Activities\UserCustomFieldActivity;
+use Kanvas\Connectors\Internal\Jobs\OAuthCallbackJob;
 use Kanvas\Connectors\IPlus\Workflows\Activities\SyncOrderWithIPlusActivities;
 use Kanvas\Connectors\IPlus\Workflows\Activities\SyncPeopleWithIPlusActivities;
 use Kanvas\Connectors\Mailgun\Webhooks\AgentProcessEmailWebhookJob;
@@ -68,7 +69,6 @@ use Kanvas\Connectors\OfferLogix\Workflow\SoftPullActivity;
 use Kanvas\Connectors\OfferLogix\Workflow\SoftPullFromLeadActivity;
 use Kanvas\Connectors\PasoRapido\Workflows\Activities\CreatePasoRapidoOrderActivity;
 use Kanvas\Connectors\PlateRecognizer\Workflows\ProcessVehicleImageActivity;
-use Kanvas\Connectors\PromptMine\Webhooks\ModelWizardReceiverJob;
 use Kanvas\Connectors\PromptMine\Webhooks\PremiumPromptApprovalWebhookJob;
 use Kanvas\Connectors\PromptMine\Workflows\Activities\CheckNuggetGenerationCountActivity;
 use Kanvas\Connectors\PromptMine\Workflows\Activities\LLMMessageResponseActivity;
@@ -341,7 +341,7 @@ class KanvasWorkflowSynActionCommand extends Command
             ScheduleEleadActivityFromEventAction::class,
             ProcessAppleSubscriptionWebhookJob::class,
             ProcessGoogleSubscriptionWebhookJob::class,
-            ModelWizardReceiverJob::class,
+            OAuthCallbackJob::class,
         ];
 
         $createdActions = [];
